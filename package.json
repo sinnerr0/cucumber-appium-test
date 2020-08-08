@@ -1,0 +1,30 @@
+{
+  "name": "solution-platform-qa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "appium",
+    "doctor:android": "appium-doctor --android",
+    "install:windows": "npm install -g windows-build-tools",
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "ks.choi@alcherainc.com",
+  "license": "ISC",
+  "devDependencies": {
+    "appium": "^1.18.0",
+    "appium-doctor": "^1.15.3",
+    "cucumber": "^6.0.5",
+    "dotenv": "^8.2.0",
+    "opencv4nodejs": "^5.6.0",
+    "webdriverio": "^6.3.6"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  }
+}
