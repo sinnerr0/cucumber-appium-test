@@ -8,7 +8,8 @@
     "start": "appium",
     "doctor:android": "appium-doctor --android",
     "install:windows": "npm install -g windows-build-tools",
-    "test": "cucumber-js"
+    "test": "cucumber-js -f json:tmp/cucumber_report.json",
+    "report": "node reporter.js"
   },
   "keywords": [],
   "author": "ks.choi@alcherainc.com",
@@ -17,6 +18,7 @@
     "appium": "^1.18.0",
     "appium-doctor": "^1.15.3",
     "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.2.0",
     "dotenv": "^8.2.0",
     "opencv4nodejs": "^5.6.0",
     "webdriverio": "^6.3.6"

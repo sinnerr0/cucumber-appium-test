@@ -1,6 +1,15 @@
 const wdio = require('webdriverio')
 const path = require('path')
-const { Before, BeforeAll, After, AfterAll, shared } = require('cucumber')
+const fs = require('fs')
+const { getScreenShotPath } = require('../../../util')
+const {
+  Before,
+  BeforeAll,
+  After,
+  AfterAll,
+  Status,
+  shared,
+} = require('cucumber')
 
 // set timeout 1 minute. default is 5 seconds.
 BeforeAll({ timeout: 60 * 1000 }, async () => {
@@ -21,4 +30,17 @@ BeforeAll({ timeout: 60 * 1000 }, async () => {
 
 AfterAll(async () => {
   await shared.driver.deleteSession()
+})
+
+After(async function (scenario) {
+  if (
+    scenario.result.status === Status.PASSED ||
+    scenario.result.status === Status.FAILED
+  ) {
+    const path = getScreenShotPath()
+    await shared.driver.saveScreenshot(path)
+    const buffer = fs.readFileSync(path)
+    this.attach(buffer.toString('base64'), 'image/png')
+  }
+  return scenario.result.status
 })

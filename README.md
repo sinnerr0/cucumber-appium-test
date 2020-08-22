@@ -64,3 +64,35 @@ test 실행
 ```
 $ npm test
 ```
+
+## 기기 Wifi 연결 설정
+
+Android 디버그 브리지(https://developer.android.com/studio/command-line/adb?hl=ko)
+
+1. 포트 5555에서 TCP/IP 연결을 수신 대기하도록 기기 설정
+
+```
+$ adb tcpip 5555
+```
+
+2. IP 주소로 기기 연결
+
+```
+$ adb connect device_ip_address
+```
+
+3. 대상 기기에 연결되었는지 확인
+
+```
+$ adb devices
+```
+
+- 연결되지 않았을 경우
+
+```
+$ adb kill-server
+```
+
+## API
+
+webdriver.io(https://webdriver.io/docs/api.html)
